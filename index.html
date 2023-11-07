@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="lv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desas</title>
+    <style>
+      h1 {
+        text-align: center; 
+      }
+
+      .poga {
+        display: block;
+        color: white;
+        font-size: 48px;
+        border: 2px solid #2e2c2f;
+        background-color: #9cadce;
+        width: 100%;
+        aspect-ratio: 1/1;
+        cursor: pointer;
+        transition: all 0.5s;
+      }
+
+      .poga:hover {
+        border-color: #f6bd60;
+        background-color: #f90093;
+      }
+
+      .poga:active {
+        transform: scale(0.1) rotate(360deg);
+      }
+
+      .galds {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 5%;
+        max-width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Desu spēle</h1>
+    <!-- Izveidojam spēles galdu -->
+    <div class="galds">
+      <button class="poga">&nbsp;</button>
+      <button class="poga">&nbsp;</button>
+      <button class="poga">&nbsp;</button>
+      <button class="poga">&nbsp;</button>
+      <button class="poga">&nbsp;</button>
+      <button class="poga">&nbsp;</button>
+      <button class="poga">&nbsp;</button>
+      <button class="poga">&nbsp;</button>
+      <button class="poga">&nbsp;</button>
+    </div>
+    <script>
+      let xVaiO = 'X';
+      const pogas = document.querySelectorAll('.poga');
+      pogas.forEach((poga) => {
+        poga.addEventListener('click', () => {
+          poga.innerText = xVaiO;
+          if (xVaiO === 'X') {
+            xVaiO = 'O';
+          } else {
+            xVaiO = 'X';
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
