@@ -56,12 +56,12 @@ function parbauditUzvaru() {
     if (x === 3) {
       // alert('Uzvarēja X');
       document.querySelector('.uzvaretajs').innerText = 'X';
-      MicroModal.show('modal-1');
+      setTimeout(MicroModal.show('modal-1'), 500);
       sautKonfeti();
     } else if (o === 3) {
       // alert('Uzvarēja O');
       document.querySelector('.uzvaretajs').innerText = '0';
-      MicroModal.show('modal-1');
+      setTimeout(MicroModal.show('modal-1'), 500);
       sautKonfeti();
     }
     if (x === 3 || o === 3) {
@@ -72,6 +72,24 @@ function parbauditUzvaru() {
   });
 }
 
+function datoraGajiens() {
+  let brivieIndeksi = [];
+  document.querySelectorAll('.poga').forEach((poga, index) => {
+    if (poga.innerHTML === '&nbsp;') {
+      brivieIndeksi.push(index);
+    }
+  });
+  const randomIndex = brivieIndeksi[Math.floor(Math.random() * brivieIndeksi.length)];
+  document.querySelectorAll('.poga')[randomIndex].innerText = xVaiO;
+  document.querySelectorAll('.poga')[randomIndex].disabled = true;
+  if (xVaiO === 'X') {
+    xVaiO = 'O';
+  } else {
+    xVaiO = 'X';
+  }
+  parbauditUzvaru();
+}
+
 const pogas = document.querySelectorAll('.poga');
 pogas.forEach((poga) => {
   poga.addEventListener('click', () => {
@@ -79,6 +97,7 @@ pogas.forEach((poga) => {
     poga.disabled = true;
     if (xVaiO === 'X') {
       xVaiO = 'O';
+      setTimeout(datoraGajiens, 500);
     } else {
       xVaiO = 'X';
     }
