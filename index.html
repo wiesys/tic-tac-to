@@ -4,69 +4,72 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Desas</title>
-    <style>
-      h1 {
-        text-align: left; 
-      }
-
-      .poga {
-        display: block;
-        color: white;
-        font-size: 48px;
-        border: 2px solid #2e2c2f;
-        background-color: #9cadce;
-        width: 100%;
-        aspect-ratio: 1/1;
-        cursor: pointer;
-        transition: all 0.5s;
-      }
-
-      .poga:hover {
-        border-color: #f6bd60;
-        background-color: #f90093;
-      }
-
-      .poga:active {
-        transform: scale(0.1) rotate(360deg);
-      }
-
-      .galds {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 5%;
-        max-width: 50%;
-        margin-left: auto;
-        margin-right: auto;
-      }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="micromodal.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h1>Desu spēle</h1>
+
     <!-- Izveidojam spēles galdu -->
-    <div class="galds">
-      <button class="poga">&nbsp;</button>
-      <button class="poga">&nbsp;</button>
-      <button class="poga">&nbsp;</button>
-      <button class="poga">&nbsp;</button>
-      <button class="poga">&nbsp;</button>
-      <button class="poga">&nbsp;</button>
-      <button class="poga">&nbsp;</button>
-      <button class="poga">&nbsp;</button>
-      <button class="poga">&nbsp;</button>
+    <div class="spele">
+      <div class="galds">
+        <button class="poga">&nbsp;</button>
+        <button class="poga">&nbsp;</button>
+        <button class="poga">&nbsp;</button>
+        <button class="poga">&nbsp;</button>
+        <button class="poga">&nbsp;</button>
+        <button class="poga">&nbsp;</button>
+        <button class="poga">&nbsp;</button>
+        <button class="poga">&nbsp;</button>
+        <button class="poga">&nbsp;</button>
+      </div>
+      <svg viewBox="0 0 100 100" class="linijas">
+        <line x1="10" y1="15" x2="90" y2="15" />
+        <line x1="10" y1="50" x2="90" y2="50" />
+        <line x1="10" y1="85" x2="90" y2="85" />
+        <line x1="15" y1="10" x2="15" y2="90" />
+        <line x1="50" y1="10" x2="50" y2="90" />
+        <line x1="85" y1="10" x2="85" y2="90" />
+        <line x1="10" y1="10" x2="90" y2="90" />
+        <line x1="90" y1="10" x2="10" y2="90" />
+      </svg>
     </div>
-    <script>
-      let xVaiO = 'X';
-      const pogas = document.querySelectorAll('.poga');
-      pogas.forEach((poga) => {
-        poga.addEventListener('click', () => {
-          poga.innerText = xVaiO;
-          if (xVaiO === 'X') {
-            xVaiO = 'O';
-          } else {
-            xVaiO = 'X';
-          }
-        });
-      });
-    </script>
+
+    <!-- Izveidojam modālo logu -->
+    <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+      <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+          <header class="modal__header">
+            <h2 class="modal__title" id="modal-1-title">
+              🎉 URĀ!!! 🎉
+            </h2>
+            <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+          </header>
+          <main class="modal__content" id="modal-1-content">
+            <p>
+              Uzvarēja <span class="uzvaretajs">?</span>!
+            </p>
+          </main>
+          <footer class="modal__footer">
+            <button class="modal__btn modal__btn-primary">Jauna spēle</button>
+            <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Aizvērt</button>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
